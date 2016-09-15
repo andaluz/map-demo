@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,54 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tMw-ez-cSP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="U3q-5S-Fqr"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7b-U5-t3y">
+                                <rect key="frame" x="202" y="360" width="196" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kookoo :)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncb-tl-uQu">
+                                        <rect key="frame" x="62" y="109" width="72" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="LcK-ZO-a6w"/>
+                                            <constraint firstAttribute="width" constant="72" id="h63-zB-sGn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Ncb-tl-uQu" firstAttribute="centerY" secondItem="V7b-U5-t3y" secondAttribute="centerY" id="QGT-uQ-53d"/>
+                                    <constraint firstAttribute="width" constant="196" id="RXw-eg-0Ia"/>
+                                    <constraint firstItem="Ncb-tl-uQu" firstAttribute="centerX" secondItem="V7b-U5-t3y" secondAttribute="centerX" id="UHT-xt-e2u"/>
+                                    <constraint firstAttribute="height" constant="240" id="wOj-H9-AWF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="V7b-U5-t3y" secondAttribute="bottom" id="04n-b2-17L"/>
+                            <constraint firstAttribute="trailing" secondItem="tMw-ez-cSP" secondAttribute="trailing" id="AOC-Dm-PKm"/>
+                            <constraint firstItem="V7b-U5-t3y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NdH-i4-gxU"/>
+                            <constraint firstItem="tMw-ez-cSP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SL4-wL-zEC"/>
+                            <constraint firstItem="tMw-ez-cSP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Sq8-sy-JfY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tMw-ez-cSP" secondAttribute="bottom" id="iSk-1p-Xwd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="tMw-ez-cSP" id="Q9y-1f-JdN"/>
+                        <outlet property="purpleView" destination="V7b-U5-t3y" id="JAm-AF-oym"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="429"/>
         </scene>
     </scenes>
 </document>
