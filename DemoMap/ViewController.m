@@ -46,13 +46,13 @@
 - (void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     NSLog(@"[mapView - didSelectAnnotationView]");
     
-    [self hidePurpleView: YES];
+    [self hidePurpleView: NO];
 }
 
 - (void) mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
     NSLog(@"[mapView - didDeSelectAnnotationView]");
     
-    [self hidePurpleView: NO];
+    [self hidePurpleView: YES];
 }
 
 
@@ -71,17 +71,16 @@
 }
 
 - (void) hidePurpleView: (BOOL) hide {
-    [UIView animateWithDuration: 2.0
+    [UIView animateWithDuration: 0.5
+                          delay: 0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
                      animations: ^() {
-                         CGRect frame = self.purpleView.frame;
+                         if(hide)
+                             self.bottomConstraint.constant = -CGRectGetHeight(self.purpleView.bounds);
+                         else
+                             self.bottomConstraint.constant = 0;
                          
-                         if(hide) {
-                             frame.origin.y = [[UIScreen mainScreen] bounds].size.height;
-                         } else {
-                             frame.origin.y = [[UIScreen mainScreen] bounds].size.height - frame.size.height;
-                         }
-                         
-                         self.purpleView.frame = frame;
+                         [self.purpleView layoutIfNeeded];
                      }
                      completion: ^(BOOL finished) {
                          NSLog(@"animation on prupleview finished");

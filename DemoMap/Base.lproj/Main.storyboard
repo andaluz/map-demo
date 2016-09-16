@@ -57,6 +57,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="04n-b2-17L" id="bpC-Me-CRK"/>
                         <outlet property="mapView" destination="tMw-ez-cSP" id="Q9y-1f-JdN"/>
                         <outlet property="purpleView" destination="V7b-U5-t3y" id="JAm-AF-oym"/>
                     </connections>
