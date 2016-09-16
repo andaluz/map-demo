@@ -58,8 +58,8 @@
     
     MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
     annotationPoint.coordinate = annotationCoord;
-    annotationPoint.title = @"Bouzabal";
-    annotationPoint.subtitle = @"Mashi shoghlak!";
+    annotationPoint.title = @"Ronald Gump";
+    annotationPoint.subtitle = @"I love you all!";
     [_mapView addAnnotation:annotationPoint];
     [_mapView selectAnnotation: annotationPoint animated: YES];
 }
