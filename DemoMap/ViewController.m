@@ -76,7 +76,7 @@
                          //self.purpleView.alpha = hide?1.0:0.0;
                          CGRect frame = self.purpleView.frame;
                          float height = frame.size.height;
-                         frame.origin.y = self.purpleView.frame.origin.y+(hide?-1:1)*height;
+                         frame.origin.y = self.purpleView.frame.origin.y+(hide?1:-1)*height;
                          self.purpleView.frame = frame;
                      }
                      completion: ^(BOOL finished) {
