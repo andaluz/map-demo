@@ -73,10 +73,14 @@
 - (void) hidePurpleView: (BOOL) hide {
     [UIView animateWithDuration: 2.0
                      animations: ^() {
-                         //self.purpleView.alpha = hide?1.0:0.0;
                          CGRect frame = self.purpleView.frame;
-                         float height = frame.size.height;
-                         frame.origin.y = self.purpleView.frame.origin.y+(hide?1:-1)*height;
+                         
+                         if(hide) {
+                             frame.origin.y = [[UIScreen mainScreen] bounds].size.height;
+                         } else {
+                             frame.origin.y = [[UIScreen mainScreen] bounds].size.height - frame.size.height;
+                         }
+                         
                          self.purpleView.frame = frame;
                      }
                      completion: ^(BOOL finished) {
