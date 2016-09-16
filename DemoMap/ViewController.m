@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    //[self initializeUI];
+    [self initializeUI];
     finishedLoadingMap = NO;
 }
 
@@ -30,7 +30,26 @@
 }
 
 - (void) initializeUI {
-    self.purpleView.hidden = YES;
+    // Adding single tap gesture
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget: self
+                                                                                action:@selector(didSingleTapOnScreen:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.mapView addGestureRecognizer:singleTap];
+    
+    // Adding double taps gesture
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget: self
+                                                                                action:@selector(didDoubleTapsOnScreen:)];
+    doubleTap.numberOfTapsRequired = 2;
+    doubleTap.numberOfTouchesRequired = 1;
+    [self.mapView addGestureRecognizer:doubleTap];
+}
+
+- (IBAction)didSingleTapOnScreen: (id)sender {
+    NSLog(@"didSingleTapOnScreen");
+}
+
+- (IBAction)didDoubleTapsOnScreen: (id)sender {
+    NSLog(@"didDoubleTapsOnScreen");
 }
 
 
@@ -71,7 +90,7 @@
 }
 
 - (void) hidePurpleView: (BOOL) hide {
-    [UIView animateWithDuration: 0.5
+    [UIView animateWithDuration: 0.25
                           delay: 0.0
                         options: UIViewAnimationOptionCurveEaseInOut
                      animations: ^() {
