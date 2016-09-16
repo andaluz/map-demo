@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () {
+    BOOL finishedLoadingMap;
+}
 
 @end
 
@@ -19,13 +21,13 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     //[self initializeUI];
+    finishedLoadingMap = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (void) initializeUI {
     self.purpleView.hidden = YES;
@@ -34,17 +36,21 @@
 
 #pragma mark - mapview callbacks
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
-    [self addDemoPin];
+    NSLog(@"[mapViewDidFinishLoadingMap]");
+    if(!finishedLoadingMap) {
+        [self addDemoPin];
+        finishedLoadingMap = YES;
+    }
 }
 
 - (void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    NSLog(@"mapView - didSelectAnnotationView");
+    NSLog(@"[mapView - didSelectAnnotationView]");
     
     [self hidePurpleView: YES];
 }
 
 - (void) mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-    NSLog(@"mapView - didDeSelectAnnotationView");
+    NSLog(@"[mapView - didDeSelectAnnotationView]");
     
     [self hidePurpleView: NO];
 }
@@ -67,7 +73,11 @@
 - (void) hidePurpleView: (BOOL) hide {
     [UIView animateWithDuration: 2.0
                      animations: ^() {
-                         self.purpleView.alpha = hide?1.0:0.0;
+                         //self.purpleView.alpha = hide?1.0:0.0;
+                         CGRect frame = self.purpleView.frame;
+                         float height = frame.size.height;
+                         frame.origin.y = self.purpleView.frame.origin.y+(hide?-1:1)*height;
+                         self.purpleView.frame = frame;
                      }
                      completion: ^(BOOL finished) {
                          NSLog(@"animation on prupleview finished");
